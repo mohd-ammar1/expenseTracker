@@ -14,6 +14,29 @@
             <label for="name">Name</label>
             <input type="text" name="name" id="name" th:field="*{name}">
             <br>
+            <label for="amount">Amount</label>
+            <input type="number" name="amount" id="amount" th:field="*{amount}">
+            <br>
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" th:field="*{date}">
+            <br>
+            <label for="type">Type</label>
+            <select name="type"id="type" th:field="*{type}">
+                <option value="" >Select</option>
+                <option value="income">Income</option>
+                <option value="expense">Expense</option>
+            </select>
+
+            <label for="pMethod">Payment Method</label>
+            <select name="pMethod" id="pMethod" th:field="*{paymentMethod}">
+                <option value="cash">Cash</option>
+                <option value="upi">UPI</option>
+                <option value="card">Card</option>
+                <option value="bankTransfer">Bank Transfer</option>
+            </select>
+
+            <label for="note">Note</label>
+            <textarea name="note" id="note" cols="30" rows="10" placeholder="Write Something you want you should remember about this transaction" th:field="*{note}"></textarea>
             <input type="submit" value="Submit">
         </form>
 

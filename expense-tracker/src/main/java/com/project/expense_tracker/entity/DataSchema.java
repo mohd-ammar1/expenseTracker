@@ -1,17 +1,21 @@
 package com.project.expense_tracker.entity;
 
 import java.time.LocalDate;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@Table(name = "Transactions")
 public class DataSchema {
 
-    @Id
+    @Id()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private float amount;
