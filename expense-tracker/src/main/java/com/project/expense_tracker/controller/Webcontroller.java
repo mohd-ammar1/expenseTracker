@@ -1,6 +1,8 @@
 package com.project.expense_tracker.controller;
 
-import com.project.expense_tracker.service.Databaseservice;
+import com.project.expense_tracker.entity.UserSchema;
+import com.project.expense_tracker.repositry.UserRepositry;
+import com.project.expense_tracker.service.Dataservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,7 @@ import java.util.List;
 public class Webcontroller {
 
     @Autowired
-    Databaseservice databaseservice;
+    Dataservice dataservice;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -33,14 +35,14 @@ public class Webcontroller {
 
     @PostMapping("/submit" ) 
     public String submitData(@ModelAttribute("dataSchema") DataSchema entity) {
-            databaseservice.saveData(entity);
+            dataservice.saveData(entity);
         System.out.println(entity.toString());
         return("Success");
     }
 
     @GetMapping("/data")
     public String showUsers(Model model){
-        List<DataSchema> fullData = databaseservice.fetchFullData();
+        List<DataSchema> fullData = dataservice.fetchFullData();
         model.addAttribute("transactions",fullData);
         return "fullData";
     }
