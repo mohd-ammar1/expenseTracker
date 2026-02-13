@@ -17,13 +17,13 @@ public class UserController {
 
     @GetMapping("/signup")
     public String signUp(Model model){
-        model.addAttribute("signUp",new UserSchema());
+        model.addAttribute("signup",new UserSchema());
         return("signUp");
     }
 
     @PostMapping("/signup")
-    public String processSignUp(@ModelAttribute("signUp") UserSchema userSchema){
+    public String processSignUp(@ModelAttribute("signup") UserSchema userSchema){
         userService.signup(userSchema);
-        return("home");
+        return("redirect:/home");
     }
 }

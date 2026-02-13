@@ -37,7 +37,7 @@ public class Webcontroller {
     public String submitData(@ModelAttribute("dataSchema") DataSchema entity) {
             dataservice.saveData(entity);
         System.out.println(entity.toString());
-        return("Success");
+        return("success");
     }
 
     @GetMapping("/data")
