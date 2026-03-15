@@ -41,4 +41,9 @@ public class DataRestController {
         UserSchema userSchema = userService.getFullSchema(semiuserSchema);
         return dataservice.fetchFullData(userSchema);
     }
+
+    @PostMapping("/sort")
+    public List<DataSchema> sortData(HttpSession session, ){
+
+    }
 }
