@@ -11,11 +11,15 @@ import java.sql.Date;
 @NoArgsConstructor
 public class SortSchema {
     String name;
-    int amount;
+    Double amount;
     String amountType;
     Date finaldate;
     String datetype;
     String typeslt;
     String method;
+
+    public String toString(){
+        return "Name: "+name+" Amount: "+amount+" AmountType: "+amountType+" Date: "+finaldate+" DateType: "+datetype+" Type: "+typeslt+" Method: "+method;
+    }
 
 }

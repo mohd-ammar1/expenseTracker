@@ -1,6 +1,7 @@
 package com.project.expense_tracker.controller;
 
 import com.project.expense_tracker.entity.DataSchema;
+import com.project.expense_tracker.entity.SortSchema;
 import com.project.expense_tracker.entity.UserSchema;
 import com.project.expense_tracker.service.Dataservice;
 import com.project.expense_tracker.service.UserService;
@@ -8,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,7 +45,11 @@ public class DataRestController {
     }
 
     @PostMapping("/sort")
-    public List<DataSchema> sortData(HttpSession session, ){
-
+    public List<DataSchema> sortData(HttpSession session, @RequestBody SortSchema sortSchema ){
+         UserSchema semiuserSchema = (UserSchema) session.getAttribute("loggedUser");
+        UserSchema userSchema = userService.getFullSchema(semiuserSchema);
+        System.out.println("User: "+userSchema.toString());
+        System.out.println("Sorting details: "+sortSchema.toString());
+        return dataservice.fetchFullData(userSchema);
     }
 }
