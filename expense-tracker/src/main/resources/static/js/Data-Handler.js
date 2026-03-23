@@ -34,13 +34,15 @@ $(document).ready(function () {
         seldate = date.getDate();
         selmonth = date.getMonth();
         selyear = date.getFullYear();
-
+        const day = String(seldate).padStart(2, '0');
+        const month = String(selmonth).padStart(2, '0');
 
         var nameVal = $("#namef").val().trim() || null;        // name input
         var amountVal = $("#amountf").val().trim() || null;    // amount input
         var amountTypeVal = $("#amountsel").val().trim() || null; // amount type dropdown
-        var finalDateVal = (seldate + "/" + selmonth + "/" + selyear).trim();
-        if (!seldate || !selmonth || !selyear) finalDateVal = null; // final date
+
+        var finalDateVal = `${selyear}-${month}-${day}`;
+        if (!seldate || !selmonth || !selyear) finalDateVal = null;
         var dateTypeVal = $("#datesel").val().trim() || null;  // date type dropdown
         var typeSltVal = $("#typeselect").val().trim() || null; // type select (income/expense)
         var methodVal = $("#pmethodsel").val().trim() || null;  // payment method dropdown
@@ -71,19 +73,19 @@ $(document).ready(function () {
             method: "POST",
             data: jsondata,
             contentType: "application/json",
-           success: function (data) {
+            success: function (data) {
                 data.forEach(item => {
-                console.log(item.id + " : " + item.name + " : " + item.amount+" : "+item.date +
-                     " : " + item.type + " : " + item.PaymentMethod+" : "+ item.Category +" : "+ item.note)
-            })
-        }
-        ,error: function(){
+                    console.log(item.id + " : " + item.name + " : " + item.amount + " : " + item.date +
+                        " : " + item.type + " : " + item.PaymentMethod + " : " + item.Category + " : " + item.note)
+                })
+            }
+            , error: function () {
                 console.log("Error Occured")
             }
-          
-        })   
+
+        })
     });
-        console.log("Name", name, " \n Amount:", amount, "\n Amount type:", amounttype, "\nDate:", finaldate, "\nDate Type:", datetype, "\nType:", typeslt, "\nPayment Method: ", method)
-    })
+    console.log("Name", name, " \n Amount:", amount, "\n Amount type:", amounttype, "\nDate:", finaldate, "\nDate Type:", datetype, "\nType:", typeslt, "\nPayment Method: ", method)
+})
 
 
