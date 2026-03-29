@@ -98,6 +98,7 @@
 			<classifier>jakarta</classifier>
 			<scope>provided</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>

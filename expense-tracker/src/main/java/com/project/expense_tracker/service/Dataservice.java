@@ -136,8 +136,6 @@ public class Dataservice {
         }
     }
         if (sortSchema.getTypeslt()!= null) {
-            
-        
         if (sortSchema.getTypeslt().equals("income")) {
             query.where(dataSchema.type.eq("income"));
         }else if(sortSchema.getTypeslt().equals("expense")){
@@ -145,7 +143,6 @@ public class Dataservice {
         }
     }
         if (sortSchema.getPaymentMethod() != null) {
-
         if (sortSchema.getPaymentMethod().equals("cash")) {
             query.where(dataSchema.PaymentMethod.eq("cash"));
         }else if(sortSchema.getPaymentMethod().equals("upi")){

@@ -32,7 +32,7 @@ $(document).ready(function () {
 
         var date = new Date($("#datef").val());
         seldate = date.getDate();
-        selmonth = date.getMonth();
+        selmonth = date.getMonth()+1;
         selyear = date.getFullYear();
         const day = String(seldate).padStart(2, '0');
         const month = String(selmonth).padStart(2, '0');
@@ -64,7 +64,7 @@ $(document).ready(function () {
             finaldate: finalDateVal,
             datetype: dateTypeVal,
             typeslt: typeSltVal,
-            method: methodVal
+            paymentMethod: methodVal
         };
         jsondata = JSON.stringify(data, null, 2);
 
